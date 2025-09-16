@@ -8,6 +8,7 @@
 - Créer un service web : `dotnet new webapi -o <nom du projet>`
 - Créer un projet de test : `dotnet new mstest -n <nom du projet>.UnitTests`
 - Créer une référence depuis un projet vers un autre : `dotnet add <projet 1>.csproj reference <projet 2>.csproj`
+- Créer un fichier `.gitignore` par défaut : `dotnet new gitignore`
 
 ### Git
 
