@@ -1,4 +1,4 @@
-# Travaux pratique de génie Logiciel
+# Travaux pratique de génie logiciel
 
 ## Cheat Sheet
 
