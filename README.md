@@ -4,6 +4,7 @@
 
 ### Dotnet
 
+- Vérifier la version de .Net : `dotnet --version`
 - Créer une application console : `dotnet new console -o <nom du projet>`
 - Créer un service web : `dotnet new webapi -o <nom du projet>`
 - Créer un projet de test : `dotnet new mstest -n <nom du projet>.UnitTests`
