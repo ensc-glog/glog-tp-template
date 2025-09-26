@@ -39,6 +39,7 @@ git config --global user.email <email@ensc.fr>
 ### Entity Framework
 
 - Installer les outils d'interface de ligne de commande (CLI) : `dotnet tool install --global dotnet-ef`
+- Vérifier l'installation : `dotnet ef`
 - Ajouter Entity Framework (avec SQLite) à un projet :
 ```
 dotnet add package Microsoft.EntityFrameworkCore.Design
