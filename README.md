@@ -10,6 +10,7 @@
 - Créer un projet de test : `dotnet new mstest -n <nom du projet>.UnitTests`
 - Créer une référence depuis un projet vers un autre : `dotnet add <projet 1>.csproj reference <projet 2>.csproj`
 - Créer un fichier `.gitignore` par défaut : `dotnet new gitignore`
+- Ajouter un paquet à un projet : `dotnet add package <nom du paquet>`
 
 ### Git
 
@@ -36,3 +37,37 @@ git config --global user.email <email@ensc.fr>
 ### Linq
 
 ### Entity Framework
+
+- Installer les outils d'interface de ligne de commande (CLI) : `dotnet tool install --global dotnet-ef`
+- Ajouter Entity Framework (avec SQLite) à un projet :
+```
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+```
+- Ajouter une migration suite à évolution du modèle : `dotnet ef migrations add <message de migration>`
+- Créer ou mettre à jour la base de données : `dotnet ef database update`
+
+#### Exemple de fichier Context
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+
+public class TodoContext : DbContext
+{
+  private const string DbPath = "data.sqlite"
+
+  // Mettre à jour cette section en fonction du projet
+  public DbSet<Todo> Todos { get; set; } = null!;
+  public DbSet<List> Lists { get; set; } = null!;
+  public DbSet<User> Users { get; set; } = null!;
+
+  protected override void OnConfiguring(DbContextOptionsBuilder options)
+  {
+    options.UseSqlite($"Data Source={DbPath}");
+    options.LogTo(
+      Console.WriteLine,
+      new[] { DbLoggerCategory.Database.Command.Name },
+      LogLevel.Information);
+  }
+}
+```
