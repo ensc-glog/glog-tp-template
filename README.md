@@ -52,13 +52,12 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 
 ```csharp
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 public class TodoContext : DbContext
 {
   private const string DbPath = "data.sqlite";
 
-  // Mettre à jour cette section en fonction du projet
+  // Mettre à jour cette section en fonction du projet (Models/)
   public DbSet<Todo> Todos { get; set; } = null!;
   public DbSet<List> Lists { get; set; } = null!;
   public DbSet<User> Users { get; set; } = null!;
@@ -66,10 +65,6 @@ public class TodoContext : DbContext
   protected override void OnConfiguring(DbContextOptionsBuilder options)
   {
     options.UseSqlite($"Data Source={DbPath}");
-    options.LogTo(
-      Console.WriteLine,
-      new[] { DbLoggerCategory.Database.Command.Name },
-      LogLevel.Information);
   }
 }
 ```
