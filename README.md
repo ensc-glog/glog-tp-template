@@ -56,7 +56,7 @@ using Microsoft.Extensions.Logging;
 
 public class TodoContext : DbContext
 {
-  private const string DbPath = "data.sqlite"
+  private const string DbPath = "data.sqlite";
 
   // Mettre à jour cette section en fonction du projet
   public DbSet<Todo> Todos { get; set; } = null!;
