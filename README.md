@@ -52,6 +52,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 
 ```csharp
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 public class TodoContext : DbContext
 {
