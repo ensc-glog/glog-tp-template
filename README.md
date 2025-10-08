@@ -11,6 +11,11 @@
 - Créer une référence depuis un projet vers un autre : `dotnet add <projet 1>.csproj reference <projet 2>.csproj`
 - Créer un fichier `.gitignore` par défaut : `dotnet new gitignore`
 - Ajouter un paquet à un projet : `dotnet add package <nom du paquet>`
+- Pour gérer les problèmes de certificat :
+```
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
+```
 
 ### Git
 
