@@ -80,6 +80,8 @@ public class TodoContext : DbContext
 - Activer Scalar :
 ```csharp
 // Program.cs
+using Scalar.AspNetCore; // <-- !! Ajoutez cette ligne !!
+
 var builder = WebApplication.CreateBuilder(args);
 
 ...
