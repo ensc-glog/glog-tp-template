@@ -74,6 +74,79 @@ public class TodoContext : DbContext
 }
 ```
 
+### cURL
+
+- Requête GET simple : `curl <url>` ou `curl -X GET <url>` (par défaut cURL fait du GET)
+- Requête GET en suivant les redirections : `curl -L <url>`
+- Requête POST JSON : `curl -X POST -H 'Content-Type: application/json' -d '{…}' <url>`
+- Requête PUT avec JSON : `curl -X PUT -H 'Content-Type: application/json' -d '{…}' <url>`
+- Requête DELETE : `curl -X DELETE <url>`
+- Afficher l'en-têtes de la réponse : `curl -i …`
+
+### Contrôleur HTTP
+
+#### Exemple de contrôleur HTTP
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+[ApiController] // Déclare un contrôleur HTTP (≈ point d'entrée HTTP)
+[Route("api/tache")] // Définit le chemin d’accès de base pour ce contrôleur
+// ControllerBase permet de bénéficier des utilitaires HTTP (Ok, NotFound, etc.)
+public class TacheController : ControllerBase
+{
+    [HttpGet] // Répond aux requêtes HTTP GET sur "api/tache"
+    public List<Tache> GetTaches()
+    {
+        // Retourner la liste de toutes les tâches
+    }
+
+    [HttpGet("{id}")] // Répond aux requêtes HTTP GET sur "api/tache/{id}"
+    public Tache GetTache(int id)
+    {
+        // Retourner la tâche id
+    }
+
+    [HttpPost] // Répond aux requêtes HTTP POST sur "api/tache/"
+    public Tache PostTache(Tache tache)
+    {
+        // Stocker en base la tache
+        // Retourner la tache
+    }
+
+    [HttpPut("{id}")] // Répond aux requêtes HTTP PUT sur "api/tache/{id}"
+    public Tache PutTache(int id, Tache tache)
+    {
+        // Modifier la tache id
+        // Retourner la tache id
+    }
+
+    [HttpDelete("{id}")] // Répond aux requêtes HTTP DELETE sur "api/tache/{id}"
+    public void DeleteTache(int id)
+    {
+        // Supprimer la tache id
+    }
+}
+```
+
+#### Activer les contrôleurs HTTP
+
+```csharp
+// Program.cs
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddOpenApi();
+builder.Services.AddControllers(); // <-- !! Ajoutez cette ligne !!
+
+...
+
+app.MapControllers(); // <-- !! Ajoutez cette ligne !!
+
+app.UseHttpsRedirection();
+
+app.Run();
+```
+
 ### Scalar (interface développeur)
 
 - Ajouter Scalar à un projet : `dotnet add package Scalar.AspNetCore`
@@ -99,13 +172,3 @@ if (app.Environment.IsDevelopment())
 
 app.Run();
 ```
-
-### cURL
-
-- Requête GET simple : `curl <url>` ou `curl -X GET <url>` (par défaut cURL fait du GET)
-- Requête GET en suivant les redirections : `curl -L <url>`
-- Requête POST JSON : `curl -X POST -H 'Content-Type: application/json' -d '{…}' <url>`
-- Requête PUT avec JSON : `curl -X PUT -H 'Content-Type: application/json' -d '{…}' <url>`
-- Requête DELETE : `curl -X DELETE <url>`
-- Afficher l'en-têtes de la réponse : `curl -i …`
-
