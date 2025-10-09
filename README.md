@@ -2,21 +2,6 @@
 
 ## Cheat Sheet
 
-### Dotnet
-
-- Vérifier la version de .Net : `dotnet --version`
-- Créer une application console : `dotnet new console -o <nom du projet>`
-- Créer un service web : `dotnet new webapi -o <nom du projet>`
-- Créer un projet de test : `dotnet new mstest -n <nom du projet>.UnitTests`
-- Créer une référence depuis un projet vers un autre : `dotnet add <projet 1>.csproj reference <projet 2>.csproj`
-- Créer un fichier `.gitignore` par défaut : `dotnet new gitignore`
-- Ajouter un paquet à un projet : `dotnet add package <nom du paquet>`
-- Pour gérer les problèmes de certificat :
-```
-dotnet dev-certs https --clean
-dotnet dev-certs https --trust
-```
-
 ### Git
 
 - Configurer git sur la machine :
@@ -32,6 +17,21 @@ git config --global user.email <email@ensc.fr>
   - mettre à jour l’espace de travail : `git pull`
   - ne pas modifier l’espace de travail : `git fetch`
 - Regarder le statut du dépôt local : `git status`
+
+### Dotnet
+
+- Vérifier la version de .Net : `dotnet --version`
+- Créer une application console : `dotnet new console -o <nom du projet>`
+- Créer un service web : `dotnet new webapi -o <nom du projet>`
+- Créer un projet de test : `dotnet new mstest -n <nom du projet>.UnitTests`
+- Créer une référence depuis un projet vers un autre : `dotnet add <projet 1>.csproj reference <projet 2>.csproj`
+- Créer un fichier `.gitignore` par défaut : `dotnet new gitignore`
+- Ajouter un paquet à un projet : `dotnet add package <nom du paquet>`
+- Pour gérer les problèmes de certificat :
+```
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
+```
 
 ### C#
 
@@ -73,3 +73,13 @@ public class TodoContext : DbContext
   }
 }
 ```
+
+### cURL
+
+- Requête GET simple : `curl <url>` ou `curl -X GET <url>` (par défaut cURL fait du GET)
+- Requête GET en suivant les redirections : `curl -L <url>`
+- Requête POST JSON : `curl -X POST -H 'Content-Type: application/json' -d '{…}' <url>`
+- Requête PUT avec JSON : `curl -X PUT -H 'Content-Type: application/json' -d '{…}' <url>`
+- Requête DELETE : `curl -X DELETE <url>`
+- Afficher l'en-têtes de la réponse : `curl -i …`
+
