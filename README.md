@@ -74,6 +74,30 @@ public class TodoContext : DbContext
 }
 ```
 
+### Scalar (interface développeur)
+
+- Ajouter Scalar à un projet : `dotnet add package Scalar.AspNetCore`
+- Activer Scalar :
+```csharp
+// Program.cs
+var builder = WebApplication.CreateBuilder(args);
+
+...
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+	app.MapOpenApi();
+	app.MapScalarApiReference(); // <-- !! Ajoutez cette ligne !!
+}
+
+...
+
+app.Run();
+```
+
 ### cURL
 
 - Requête GET simple : `curl <url>` ou `curl -X GET <url>` (par défaut cURL fait du GET)
